@@ -12,6 +12,8 @@ private_key = os.environ.get('GCS_PRIVATE_KEY')
 private_key_id = os.environ.get('GCS_PRIVATE_KEY_ID')
 client_cert_url= os.environ.get("GET_CERT_URL")
 
+private_key = private_key.replace('\\n', '\n') if private_key else None
+
 credentials_dict={
   "type": "service_account",
   "project_id": project_id,
