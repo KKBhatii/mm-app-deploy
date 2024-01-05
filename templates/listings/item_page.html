@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- for title -->
+{% block title %}
+<title> {{data.item.title | title }} | MM </title>
+{% endblock title %}
+
+<!-- for static -->
+{% block static %}
+    <link rel="stylesheet" href="{% static "/css/listing_item_page.css" %}">
+    <script defer src="{% static "/js/listing_item_page.js" %}"></script>
+{% endblock static %}
+
+<!-- content -->
+{% block content %}
+{% load currency_filter %}
+    <div class="root">
+        <p hidden class="get-id" id="{{data.item.id}}" ></p>
+        <!-- ---------------------IMAGES------------------- -->
+        <div class="images-container hover-image">
+            {% comment %} <button id="prevBtn">Previous</button> {% endcomment %}
+            <img id="prev-btn" src="{% static "/images/icons/prev_white.png" %}" alt="">
+            <img id="carousel-image" src="" alt="">
+            {% comment %} <button id="nextBtn">Next</button> {% endcomment %}
+            <img id="next-btn" src="{% static "/images/icons/next_white.png" %}" alt="">
+        </div>
+        
+        <!-- ------------------------DETAILS----------------- -->
+        <div class="details-container">
+
+            <h1 >{{data.item.title | title}}</h1>
+            <div class="desc-container">
+
+                <p>{{data.item.description}} </p>
+            </div>
+            <p id="item-price" > {{data.item.price | format_currency  }} </p>
+            <p id="item-category"  >Category: <strong>{{data.item.category}} </strong></p>
+            {% if data.item.user_id == request.user.id %}
+            <a class="unlist-item" href="{% url "listing_delete_item" id=data.item.id %}"><strong>Unlist Item</strong></a>
+            {% else %}
+            <p id="listed-by"  > Listed By: <strong><a href="{% url "user_other_profile" id=data.item.user_id %}"> {{data.listed_by.name}} </a></strong> </p>
+            <p id="interested" >Interested? <strong class="notify-user" id="{{data.item.id}}" >NOTIFY USER</strong> </p>
+
+            
+            {% endif %}
+        </div>
+        
+        
+    </div>
+
+
+{% endblock content %}

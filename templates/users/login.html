@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- for title -->
+{% block title %}
+<title>Login | MM</title>
+{% endblock title %}
+
+<!-- for static -->
+{% block static %}
+<link rel="stylesheet" href="{% static "/css/login.css" %}">
+<script src="{% static " /js/login.js" %}" defer></script>
+{% endblock static %}
+
+<!-- content -->
+{% block content %}
+<div class="root">
+    {% url "user_create_session" as create_session %}
+    <form action="{{create_session}}" method="post">
+        <p>Welcome to MM!</p>
+        {% csrf_token %}
+        {{loginForm.email}}
+        {{loginForm.password}}
+        <input type="submit" class="submit-btn" name="" id="" value="Log in">
+    </form>
+</div>
+{% endblock content %}

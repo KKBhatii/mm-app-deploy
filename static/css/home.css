@@ -1,0 +1,246 @@
+/* ----------HOVER CLASSES-------- */
+
+.on-listing-hover:hover {
+    border: 1px solid var(--primaryColor);
+    box-shadow: none;
+    background-color: rgba(202, 202, 202, 0);
+}
+
+.on-listing-hover:hover img {
+    border: 1px solid var(--primaryColor);
+}
+
+.image-hover:hover {
+    filter: brightness(0.9);
+}
+
+.categories-hover>li:hover {
+    font-weight: 800;
+    filter: brightness(0.9);
+}
+
+/* --------------------ROOT---------------- */
+.root {
+    display: flex;
+    width: 100vw;
+    height: 90vh;
+    background-color: white;
+}
+
+
+/* -------------ASIDE SECTION------------ */
+.aside-section {
+    position: relative;
+    height: 90vh;
+    width: 25vw;
+}
+
+.aside-section * {
+    cursor: pointer;
+}
+
+.aside-section>h2 {
+    font-size: 3rem;
+    color: var(--primaryColor);
+    margin-left: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.categories>li {
+    margin-left: 20px;
+    border: none;
+    list-style: none;
+    color: var(--primaryColor);
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+.divider {
+    width: 0;
+    border-right: 1px solid var(--primaryColor);
+    height: 80vh;
+    position: absolute;
+    top: 5vh;
+    right: 0;
+}
+
+
+
+/* -------------MAIN SECTION------------ */
+
+.main-container {
+    width: 75vw;
+    height: 90vh;
+}
+
+
+.search-container {
+    width: 75vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.search-container>div {
+    padding: 0;
+    border: 2px solid var(--primaryColor);
+    background-color: var(--primaryColor);
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+
+}
+
+.item-search {
+    border: none;
+    margin: 0;
+    width: 400px;
+    background-color: rgb(228, 228, 228);
+    outline: none;
+    height: 40px;
+    font-size: 1rem;
+    padding-left: 2px;
+
+}
+
+.search-icon {
+    width: 35px;
+    margin-left: 2px;
+}
+
+.items-container {
+    width: 75vw;
+    height: 80vh;
+    padding: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+}
+
+/* items */
+.item-container {
+    border: 1px solid var(--borderColor);
+    background-color: rgba(216, 216, 216, 0.664);
+    border-radius: 5px;
+    width: 250px;
+    margin: 35px;
+    height: 300px;
+    padding: 10px;
+    box-shadow: 0 0 10px 1px;
+}
+
+.item-container>img {
+    border: 1px solid var(--borderColor);
+    width: 230px;
+    height: 220px;
+}
+
+.title {
+    color: var(--primaryColor);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.price {
+    color: rgb(90, 90, 90);
+    color: var(--primaryColor);
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+/* For iPad sizes */
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+    .aside-section {
+        width: 25vw;
+    }
+
+    .aside-section>h2 {
+        font-size: 2rem;
+        margin-left: 10px;
+    }
+
+    .categories>li {
+        margin-left: 10px;
+        font-size: 1.3rem;
+    }
+
+    .search-container {
+        padding-top: 15px;
+    }
+
+    .item-container {
+        width: 200px;
+        margin: 30px;
+    }
+
+    .item-container>img {
+        width: 180px;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+    .root {
+        flex-direction: column;
+    }
+
+    .main-container,
+    .item-search {
+        width: 100%;
+    }
+
+    .aside-section>ul {
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .aside-section>h2 {
+        display: none;
+    }
+
+    .aside-section li {
+        padding: 5px;
+        border: 1px solid var(--primaryColor);
+        border-radius: 20px;
+        box-shadow: 0 0 5px 1px;
+        font-size: 1.2rem;
+
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .main-container {
+        width: 100vw;
+    }
+
+
+    .search-container {
+        width: 100vw;
+        margin-top: 5px;
+    }
+
+    .item-search {
+        width: 250px;
+    }
+
+
+    .items-container {
+        width: 100vw;
+        min-height: 80vh;
+        height: auto;
+    }
+
+
+}

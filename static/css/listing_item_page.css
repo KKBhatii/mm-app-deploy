@@ -1,0 +1,150 @@
+.hover-image:hover{
+    border: 2px solid var(--primaryColor);
+}
+
+#interested>strong:hover, #listed-by a:hover,
+.details-container>h1:hover, .unlist-item:hover, 
+#item-category>strong:hover{
+    color: var(--hoverBorder);
+    color: var(--primaryColor);
+}
+/* ------------ROOT-------------- */
+
+.root{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+
+
+/* --------------IMAGES CONTAINER----------- */
+.images-container {
+    margin-top: 10px;
+    border: 1px solid var(--primaryColor);
+    background-color: rgb(196, 196, 196);
+    position: relative;
+    width: 55vw;
+    height: 80vh;
+    text-align: center;
+}
+
+#carousel-image{
+    height: 79vh;
+    width: 45vw;
+    object-fit: contain;
+}
+
+#prev-btn,#next-btn {
+    position: absolute;
+    width: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#prev-btn {
+    display: none;
+    left: 10px;
+}
+
+#next-btn {
+    right: 10px;
+}
+
+.add-image{
+    cursor: pointer;
+}
+
+
+
+/* --------------------DETAILS CONTAINER------------ */
+.details-container{
+    margin-left: 10px;
+    width: 40vw;
+}
+
+.details-container>h1{
+    color: var(--primaryColor);
+    font-size: 3rem;
+    cursor: default; 
+}
+
+.desc-container{
+    border-top: 1px solid var(--borderColor);
+    border-bottom: 1px solid var(--borderColor);
+    width: 40vw;
+    color: var(--primaryColor);
+    height: 50vh;
+    overflow: scroll;
+    margin-top: 10px;
+}
+
+#item-price{
+    color: var(--primaryColor);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+#listed-by,#interested{
+    color: var(--primaryColor);
+    cursor: default;
+    margin-top: 20px;
+}
+
+#listed-by a, #interested>strong, #item-category>strong{
+    text-decoration: none;
+    color: var(--borderColor);
+    cursor: pointer; 
+}
+
+#item-category>strong{
+    cursor: default;
+}
+
+.unlist-item{
+    color: var(--borderColor);
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    body{
+        width: 100vw;
+    }
+
+
+    .root{
+    margin: 0;
+        padding-left: 1vw;
+        height: auto;
+        padding-right: 1vw;
+        margin-bottom: 2vh;
+        flex-direction: column;
+    }
+
+    .images-container{
+        width: 97vw;
+        height: 80vh;
+    }
+
+    #carousel-image{
+        height: 75vh;
+        width: 95vw;
+    }
+    .details-container{
+        margin-left: 0px;
+        width: 98vw;
+    }
+    .desc-container{
+        width: 98vw;
+    }
+    
+    
+    
+
+}
+

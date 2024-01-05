@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- for title -->
+{% block title %}
+<title>{{user.name}}</title>
+{% endblock title %}
+
+<!-- for static -->
+{% block static %}
+    <link rel="stylesheet" href="{% static "/css/admin_user.css" %}">
+    <script defer src="{% static "/js/admin_user.js" %}" ></script>
+{% endblock static %}
+
+<!-- content -->
+{% block content %}
+
+    {% url "admin_user_edit_page" id=user.id as edit_profile %}
+    {% url "destroy_session" as logout %}
+    {% url "admin_delete_user" id=user.id as delete_user %}
+    <div class="root">
+        
+        <!-- -----------------------ASIDE SECTION--------------- -->
+        <aside class="aside-section">
+
+            <div class="profile">
+                {% if user %}
+                <img src="{% if user.profile_picture %}{{user.profile_picture}}{% else %}{% static "/images/icons/profile-user.png" %}{% endif %}" alt="">
+                <p hidden class="user-id" >{{user.id}} </p>
+                <div class="name-id-container">
+                    <h2>{{user.name}}</h2>
+                    <button type="button" class="copy-id-btn button-hover" >COPY ID</button>
+                </div>
+
+                <p>Email:- <strong>{{user.email}} </strong></p>
+                {% if user.contact_no %} <p>Contact:- <strong>{{user.contact_no }}</strong> </p> {% endif %}
+                <div class="admin-staff-active-container">
+                    {% if user.is_active %} <p>Active</p> {% endif %}
+                    {% if user.is_superuser %} <p>| Admin</p> {% endif %}
+                    {% if user.is_staff %} <p>| Staff</p> {% endif %}
+                </div>
+                <p>Joined: <strong>{{user.created_at}} </strong></p>
+                <p>Last updated: <strong>{{user.updated_at}}</strong> </p>
+
+                <a href="{{edit_profile}}" class="button-hover">EDIT USER</a>
+
+                <div class="delete-user-btn button-hover"><p>DEELTE USER</p></div>
+                {% endif %}
+            </div>
+            <div class="divider"></div>
+        </aside>
+
+        <!-- ----------------------MAIN CONTAINER----------------- -->
+        <main class="main-container">
+            {% if listings %}
+            {% for listing, image in listings.items %}
+            
+            <div class="item-container on-listing-hover" id="{{listing.id}}">     
+                <img class="item-image image-hover" src="{% if image %}{{image.image}}{% else %}{% static "/images/icons/image.png" %}{% endif %} " id="{{listing.id}}" alt="">
+                <p class="title item-hover" id="{{listing.id}}" >{{listing.title}}</p>
+                <p class="price item-hover" id="{{listing.id}}" >{{listing.price}} </p>
+                <img class="delete-item delete-btn-hover" id="{{listing.id}}" src="{% static "/images/icons/delete.png" %}" alt="">
+            </div>
+            {% endfor %}
+
+            
+            {% else %}
+            <div class="nothing-to-show-label">
+                <p >{{user.name}} haven't listed anything yet!</p>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+
+    <!-- -----------------------DELETE POPUP----------------------- -->
+    <div class="delete-popup-container">
+        <div class="delete-popup">
+            <p>Are you sure?</p>
+            <div class="yes-no-container">
+
+                <p id="{{user.id}}" class="option-yes"> Yes</p>
+                <p class="option-no" >No</p>      
+            </div>
+        </div>
+
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- for title -->
+{% block title %}
+<title>{{request.user.name}} | Edit Profile</title>
+{% endblock title %}
+
+<!-- for static files -->
+{% block static %}
+<link rel="stylesheet" href="{% static "/css/edit_profile.css" %}">
+{% comment %}
+<script src="{% static " /js" %}"></script> {% endcomment %}
+{% endblock static %}
+
+<!-- content -->
+{% block content %}
+<div class="root">
+
+    {% url "admin_update_user" id=user.id as update %}
+    <!-- user update form -->
+    <form action="{{update}}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% comment %} {{form}} {% endcomment %}
+        <p>Personal Info</p>
+        {{ form.name.label_tag }} {{ form.name }}
+        {{ form.email.label_tag }} {{ form.email }}
+        <hr>
+        <p>Contact Info</p>
+        {{ form.contact_no.label_tag }} {{ form.contact_no }}
+        <hr>
+        <p>Profile Picture</p>
+        {% comment %} {{ form.profile_picture.label_tag }} {% endcomment %}
+        <label class="profile-pic-label" for="id_profile_picture">Select Picture</label>
+        <p hidden>
+
+            {{ form.profile_picture }}
+        </p>
+        <input type="submit" name="" class="submit-btn" value="Save Changes" id="">
+    </form>
+    {% if user.profile_picture %}
+    <img src="{{user.profile_picture}}" class="user-profile-pic" alt="">
+    {% endif %}
+
+</div>
+{% endblock content %}

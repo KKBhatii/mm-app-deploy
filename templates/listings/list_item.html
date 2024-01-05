@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- for title -->
+{% block title %}
+<title>Sell Item | MM</title>
+{% endblock title %}
+
+
+<!-- for static -->
+{% block static %}
+<link rel="stylesheet" href="{% static "/css/list_item.css" %}">
+<script src="{% static "/js/list_item.js" %}"></script>
+{% endblock static %}
+
+<!-- contnet -->
+{% block content %}
+<div class="root">
+    <h1>List your Item here!</h1>
+    {% url "listing_create_item" as create_item %}
+    <!-- create new item form -->
+    <form action="{{create_item}}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="{{form.title.name}}">{{form.title.label}}</label>
+        {{form.title}}
+        <label for="{{form.description.name}}">{{form.description.label}}</label>
+        {{form.description}}
+        {% comment %} {{form.description}} {% endcomment %}
+        <select name="{{form.category.name}}" id="">
+            <option value="" disabled selected>Choose</option>
+            {% for value, label in form.category.field.choices %}
+            <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select>
+        <label for="{{form.price.name}}">{{form.price.label}}</label>
+        {{form.price}}
+        {{form.images}}
+        <label for="id_images" class="images-label">Select Images</label>
+
+        <input type="submit" class="submit-btn" value="List Item">
+    </form>
+</div>
+
+{% endblock content %}

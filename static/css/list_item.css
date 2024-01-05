@@ -1,0 +1,105 @@
+/* -------------HOVER, FOCUS CLASSES------- */
+.images-label:hover, form>textarea:hover, form>input:hover, form>select:hover{
+    border: 1px solid var(--primaryColor);
+    
+}
+.submit-btn:hover{
+    border: 2px solid var(--primaryColor);
+    background-color: white;
+    color: var(--primaryColor);
+    font-weight: 8000;
+}
+
+.images-label:focus, form>textarea:focus, form>input:focus, form>select:focus{
+    border: 1px solid var(--primaryColor); 
+}
+
+/* ---------------ROOT-------------------- */
+.root{
+    width: 100vw;
+    height: 90vh;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.root>h1{
+    color: var(--primaryColor);
+    cursor: default;
+    
+}
+
+form{
+    width: 50vw;
+    height: 80vh;  
+}
+
+form>label{
+    font-size: 1.2rem;
+    display: block;
+    color: var(--primaryColor);
+    margin-top: 20px;
+}
+
+
+form>input, form>select, form>textarea{
+    border: 1px solid var(--borderColor);
+    border-radius: 10px;
+    padding-left: 5px;
+    width: 600px;
+    height: 40px;
+    outline: none;
+    margin-top: 5px;
+}
+
+form>select{
+    font-size: 1.2rem;
+}
+
+.images-label{
+    height: 40px;
+    width: 600px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 5px;
+    border: 1px solid var(--borderColor);
+}
+
+form>textarea{
+    height: 100px;
+}
+
+.submit-btn{
+    background-color: var(--primaryColor);
+    color: white;
+    border: none;
+}
+
+/* for mobile screens */
+@media only screen and (max-width: 768px) {
+    .root{
+        padding-left: 00px;
+    }
+    
+    .root>h1{
+        font-size: 1.2rem;     
+    }
+    
+    form{
+        width: 90vw;
+        height: auto;  
+    }
+    
+    
+    form>input, form>select, form>textarea{
+        width: 90vw;
+    }
+    
+    .images-label{
+        width: 90vw;
+    }
+    
+
+}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- for title -->
+{% block title %}
+<title>Create Account | MM</title>
+{% endblock title %}
+
+<!-- for static -->
+{% block static %}
+<link rel="stylesheet" href="{% static "/css/signup.css" %}">
+{% endblock static %}
+
+<!-- content -->
+{% block content %}
+
+{% url "user_create_verify" token=token as create %}
+<div class="root">
+    <!-- signup form -->
+    <form action="{{create}}" method="post">
+        <p>Create Account | MM</p>
+        {% csrf_token %}
+        {{form.password}}
+        {{form.confirm_password}}
+        <input type="submit" class="submit-btn" value="Create Account">
+    </form>
+</div>
+{% endblock content %}

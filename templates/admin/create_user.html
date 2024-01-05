@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- for title -->
+{% block title %}
+<title>Admin | Add User</title>
+{% endblock title %}
+
+<!-- for static files -->
+{% block static %}
+<link rel="stylesheet" href="{% static "/css/admin_create_user.css" %}">
+{% endblock static %}
+
+{% url "create" as create %}
+
+<!-- content -->
+{% block content %}
+<div class="root">
+    <!-- add user from -->
+    <form method="post">
+        <p>Add User | Admin</p>
+        {% csrf_token %}
+        {{createUserForm.name}}
+        {{createUserForm.email}}
+        {{createUserForm.password}}
+        {{createUserForm.confirm_password}}
+        <input type="submit" name="" id="" class="submit-btn" value="ADD USER">
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- for title -->
+{% block title %}
+<title>Admin Login | MM</title>
+{% endblock title %}
+
+<!-- for statics -->
+{% block static %}
+<link rel="stylesheet" href="{% static "/css/login.css" %}">
+{% endblock static %}
+
+<!-- content -->
+{% block content %}
+{% url "admin_login" as login %}
+<div class="root">
+    <!-- -----------LOGIN FORM-------- -->
+    <form action="{{login}}" method="post">
+        <p>Admin Login | MM</p>
+        {% csrf_token %}
+        {{loginForm.email}}
+        {{loginForm.password}}
+        <input class="submit-btn" type="submit" value="Log In">
+
+    </form>
+</div>
+
+
+{% endblock content %}

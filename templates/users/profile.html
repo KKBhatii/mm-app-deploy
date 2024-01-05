@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- for title -->
+{% block title %}
+<title>{% if profile_user %}{{profile_user.name}} | Profie{% else %} {{request.user.name}} | Profie {% endif %}</title>
+{% endblock title %}
+
+<!-- for static -->
+{% block static %}
+    <link rel="stylesheet" href="{% static "/css/profile.css" %}">
+    <script defer src="{% static "/js/profile.js" %}" ></script>
+{% endblock static %}
+
+<!-- content -->
+{% block content %}
+{% load currency_filter %}
+    {% url "user_edit_profile" as edit_profile %}
+    {% url "user_destroy_session" as logout %}
+    <div class="root">
+        <aside class="aside-section">
+            <div class="profile">
+                {% if profile_user %}
+                <img src="{% if profile_user.profile_picture %} {{profile_user.profile_picture}}{% else %}{% static "/images/icons/profile-user.png" %}{% endif %}" alt="">
+                <h2>{{profile_user.name}} </h2>
+                {% else %}
+                    <img src="{% if request.user.profile_picture %}{{request.user.profile_picture}}{% else %}{% static "/images/icons/profile-user.png" %}{% endif %}" alt="">
+                    <h2>{{request.user.name}} </h2>
+                    <a href="{{edit_profile}}">Edit Profile</a>
+                    <a href="{{logout}}">Logout</a>
+                {% endif %}
+            </div>
+            <div class="divider"></div>
+        </aside>
+        <main class="main-container">
+            {% if listings %}
+            
+                {% for listing, image in listings.items %}
+                    <div class="item-container" id="{{listing.id}}">
+                        <img src="{% if image %}{{image.image}}{% else %}{% static "/images/icons/image.png" %} {% endif %}" id="{{listing.id}}" alt="">
+                        <p class="title" id="{{listing.id}}" >{{listing.title}}</p>
+                        <p class="price" id="{{listing.id}}" >{{listing.price | format_currency }} </p>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="nothing-to-show-label">
+                <p >You haven't listed anything yet!</p>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+
+{% endblock content %}

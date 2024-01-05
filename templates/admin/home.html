@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- for title -->
+{% block title %}
+    <title>Admin Home | MM</title>
+{% endblock title %}
+
+
+<!-- for static -->
+{% block static %}
+    <link rel="stylesheet" href="{% static "/css/admin_home.css" %}">
+    <script defer src="{% static "/js/admin_home.js" %}"></script>
+{% endblock static %}
+
+<!-- content -->
+{% block content %}
+{% load static %}
+    {% url "user_destroy_session" as logout %}
+    <!-- -------ROOT----------- -->
+    <div class="root" >
+        <!-- ----------ASIDE SECTION------------ -->
+        <aside class="aside-section" >
+            <div id="users" class="menu-list">
+                <div class="icon-container">
+                    <img src="{% static "/images/icons/users.png" %}" alt="">
+                    
+                    
+                </div>
+                <p  class="menu-list-text">Users</p>
+                
+            </div>
+            
+            <div id="listings" class="menu-list">
+                <div class="icon-container">
+                    <img src="{% static "/images/icons/listings.png" %}" alt="">
+
+                </div>
+
+                <p  class="menu-list-text">Listings</p>
+            </div>
+            <a class="logout-btn" href="{{logout}}">    
+                <p id="logout-btn" >Logout</p>
+            </a>
+            
+            <div class="divider"></div>
+        </aside>
+        
+        <!-- ----------MAIN CONTAINER------------ -->
+        <main class="main-container">
+        </main>
+    </div>
+    
+    
+    
+    <!-- ----------DELETE POPUP------------ -->
+    <div class="delete-popup-container">
+        <div class="delete-popup">
+            {% comment %} <img src="{% static "/images/icons/close.png" %}" alt=""> {% endcomment %}
+            <p>Are you sure?</p>
+            <div class="yes-no-container">
+
+                <p class="option-yes"> Yes</p>
+                <p class="option-no" >No</p>
+                
+            </div>
+        </div>
+
+    </div>  
+
+
+{% endblock content %}
+

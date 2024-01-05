@@ -1,0 +1,51 @@
+<header>
+    
+    {% comment %} loading statics and urls {% endcomment %}
+    {% load static %}
+    {% url "user_login" as login %}
+    {% url "user_signup" as signup %}
+    {% url "user_profile" as profile %}
+    {% url "admin_home" as admin %}
+    {% url "listing_list_item" as list_item %}
+    {% url "home" as home %}
+    
+    <h2><a href="{{home}}">THE MM</a></h2>
+ {% comment %} <p>{% url "admin" as admin %}</p> {% endcomment %}
+
+
+ <nav class="navigation" >
+     <div class="drop-down" >
+         <img src="{% static "/images/icons/down-arrow.png" %}" alt="">
+         <ul class="drop-navigation-list" >
+            {% if request.user.is_authenticated %}
+            <li><a href="{{profile}}">
+    
+                <img class="user-profile" src="{% if request.user.profile_picture %}{{request.user.profile_picture}}{% else %}{% static "/images/icons/profile-user.png" %}{% endif %}" alt="Image"></li>
+            </a>
+            <li class="sell-item" ><a href="{{list_item}}">Sell Item</a></li>
+            {% if request.user.is_superuser %} <li><a href="{{admin}}">Admin</a></li> {% endif %}
+            
+            {% else %}
+            <li><a href="{{signup}}"> Sign up</a></li>
+            <li><a href="{{login}}">Log in</a></li>
+    
+            {% endif %}
+        </ul>
+     </div>
+    <ul class="navigation-list" >
+        {% if request.user.is_authenticated %}
+        <li><a href="{{profile}}">
+
+            <img class="user-profile" src="{% if request.user.profile_picture %}{{request.user.profile_picture}}{% else %}{% static "/images/icons/profile-user.png" %}{% endif %}" alt="Image"></li>
+        </a>
+        <li class="sell-item" ><a href="{{list_item}}">Sell Item</a></li>
+        {% if request.user.is_superuser %} <li><a href="{{admin}}">Admin</a></li> {% endif %}
+        
+        {% else %}
+        <li><a href="{{signup}}"> Sign up</a></li>
+        <li><a href="{{login}}">Log in</a></li>
+
+        {% endif %}
+    </ul>
+ </nav>
+</header>

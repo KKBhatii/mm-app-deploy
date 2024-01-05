@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% url "singup" as signup %}
+
+<!-- for title -->
+{% block title %}
+    <title>Sign Up | MM</title>
+{% endblock title %}
+
+<!-- for static -->
+{% block static %}
+    <link rel="stylesheet" href="{% static "/css/signup.css" %}">
+    <script src="{% static "/js/signup.js" %}" ></script>
+{% endblock static %}
+
+
+<!-- content -->
+{% block content %}
+<div class="root">
+    {% url "user_create" as create %}
+    <form action="{{create}}" method="post">
+        <p>Sign Up | MM</p>
+        {% csrf_token %}
+        {{signupForm.name}}
+        {{signupForm.email}}
+        {{signupForm.password}}
+        {{signupForm.confirm_password}}
+        <input type="submit" name="" id="" class="submit-btn" value="Sign up">
+    </form>
+</div>
+{% endblock content %}

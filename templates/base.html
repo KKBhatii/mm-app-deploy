@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+
+    {% comment %} common static files {% endcomment %}
+    {% comment %} HEADER {% endcomment %}
+    <link rel="shortcut icon" href="{% static "/images/icons/logo.png" %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static "/css/header.css" %}">
+    <script src="{% static "/js/header.js" %}" defer ></script>
+
+    
+    {% comment %} <!-- INCLUDING JQUERY --> {% endcomment %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    
+    {% comment %} <!-- INCLUDING TOASTR LIB--> {% endcomment %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    
+    {% comment %} BASE {% endcomment %}
+    <link rel="stylesheet" href="{% static "/css/base.css" %}">
+    <script src="{% static "/js/base.js" %}"></script>
+
+    {% comment %} view specific static files {% endcomment %}
+    {% block static  %}
+    
+    {% endblock static   %}
+
+    {% block title %}{% endblock title %}
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{data.title}}</title>
+</head>
+<body>
+    {% include "header.html" %}
+
+    {% block content  %}
+    
+    {% endblock content  %}
+
+    <script>
+        
+        {% for message in messages %}
+            toastr.{{ message.tags }}("{{ message }}");
+        {% endfor %}
+    </script>
+    
+</body>
+</html>

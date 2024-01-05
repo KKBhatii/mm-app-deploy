@@ -1,0 +1,7 @@
+<span class="clearable-file-input">
+    <input type="{{ widget.type }}" name="{{ widget.name }}" accept="{{ widget.attrs.accept }}"
+        class="clearablefileinput" id="{{ widget.id }}"{% if widget.is_required %} required{% endif %} {% if widget.is_disabled %}disabled{% endif %}>
+    <label for="{{ widget.id }}">
+        <span>{{ widget.attrs.placeholder }}</span>
+    </label>
+</span>

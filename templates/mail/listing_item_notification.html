@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interest in Your Listing</title>
+    <style>
+        body {
+            font-family: Consolas;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: default;
+            color:#002e2a;
+        }
+
+        .message {
+            margin-bottom: 20px;
+        }
+
+        .button {
+            width:120px;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            background-color: #002e2a;
+            display:flex;
+            jusify-content:center;
+        }
+        
+        .button>a {
+            width:120px;
+            text-align:center;
+            display:block;
+            color: white;
+            text-decoration: none;
+
+        }
+
+        .button:hover {
+            border: 2px solid #002e2a;
+            background-color: white;
+
+        }
+
+        .button:hover>a {
+            color: #002e2a;
+            font-weight:800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Interest in Your Listing</h2>
+        </div>
+        <div class="message">
+            <p>Hello, {{recipient_name}}</p>
+            <p>{{user.name}} ({{user.email}}) is interested in your listed item. Click below to view the details.</p>
+        </div>
+        <div class="button">
+            <a href="{{item_url}}">View Listing</a>
+        </div>
+        <div class="message">
+            <p>Thank you!</p>
+        </div>
+    </div>
+</body>
+
+</html>
